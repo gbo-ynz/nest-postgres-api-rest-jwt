@@ -4,8 +4,11 @@ import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Role } from 'src/common/enums/rol.enum';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
-@Auth(Role.ADMIN)
+ApiBearerAuth();
+@Auth(Role.USER)
+// @Auth(Role.ADMIN)
 @Controller('breeds')
 export class BreedsController {
   constructor(private readonly breedsService: BreedsService) {}
